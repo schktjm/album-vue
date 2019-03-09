@@ -1,10 +1,10 @@
 <template>
     <div>
-        <!--<button class="button" @click="fetchImage">Get</button>-->
-        <!--<button class="button" @click="fetchImageById">from ID</button>-->
         <div class="columns is-multiline">
             <div v-for="image in images" :key="image.id" class="column is-4">
-                <base-image :data="image" width="256px"></base-image>
+                <router-link :to="'/detail/'+image.id">
+                    <base-image :data="image" width="256px" @click="Log('test')"></base-image>
+                </router-link>
             </div>
         </div>
     </div>
@@ -28,13 +28,15 @@
             this.fetchImage();
         },
         methods: {
+            Log(val) {
+                console.log(val);
+            },
             getData(url) {
                 return fetch(url, {
                     method: 'GET',
                     mode: "cors",
                 })
                     .then(response => response.json())
-
             },
             fetchImage() {
                 console.log('get');
@@ -51,14 +53,6 @@
                         console.error(err)
                     });
             },
-            fetchImageById() {
-                const url = 'https://wfc-2019.firebaseapp.com/image/';
-                const id = '4034688';
-                this.getData(url + id)
-                    .then(response => console.log(response))
-                    .catch(err => console.error(err));
-
-            }
         }
     }
 </script>
