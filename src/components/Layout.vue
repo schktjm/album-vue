@@ -1,23 +1,31 @@
 <template>
     <div>
-        <button class="button" @click="fetchImage">Get</button>
-        <button class="button" @click="fetchImageById">from ID</button>
-        <div v-for="image in images" :key="image.id">
-            <figure class="image">
-                <img :src="image.url">
-            </figure>
+        <!--<button class="button" @click="fetchImage">Get</button>-->
+        <!--<button class="button" @click="fetchImageById">from ID</button>-->
+        <div class="columns is-multiline">
+            <div v-for="image in images" :key="image.id" class="column is-4">
+                <base-image :data="image" width="256px"></base-image>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+
+    import BaseImage from './BaseImage';
+
     export default {
         name: 'Layout',
+        components: {BaseImage},
+        props: {BaseImage},
         data() {
             return {
                 images: [],
                 isShow: false
             }
+        },
+        created() {
+            this.fetchImage();
         },
         methods: {
             getData(url) {
@@ -30,8 +38,10 @@
             },
             fetchImage() {
                 console.log('get');
-                const url = 'https://wfc-2019.firebaseapp.com/images?limit=&offset=';
-                this.getData(url)
+                const url = 'https://wfc-2019.firebaseapp.com/images?';
+                const limit = 'limit=' + 30 + '&';
+                const offset = 'offset=' + 0;
+                this.getData(url + limit + offset)
                     .then(res => {
                         this.images = res.data.images;
                         console.log(this.images);
