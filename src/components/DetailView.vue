@@ -38,6 +38,7 @@
                     .then(response => response.json())
             },
             fetchImageById() {
+                /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
                 const url = 'https://wfc-2019.firebaseapp.com/image/';
                 const id = this.$route.params.id;
                 this.getData(url + id)

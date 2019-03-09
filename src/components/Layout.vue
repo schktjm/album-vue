@@ -3,7 +3,7 @@
         <div class="columns is-multiline">
             <div v-for="image in images" :key="image.id" class="column is-4">
                 <router-link :to="'/detail/'+image.id">
-                    <base-image :data="image" width="256px" @click="Log('test')"></base-image>
+                    <base-image :data="image" width="256px" :class="{isSquare:true}"></base-image>
                 </router-link>
             </div>
         </div>
@@ -39,6 +39,7 @@
                     .then(response => response.json())
             },
             fetchImage() {
+                /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
                 console.log('get');
                 const url = 'https://wfc-2019.firebaseapp.com/images?';
                 const limit = 'limit=' + 30 + '&';
