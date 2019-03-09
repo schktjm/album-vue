@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Layout from './components/Layout';
 import DetailView from './components/DetailView';
 
+
 Vue.use(Router);
 
 export default new Router({
@@ -13,7 +14,7 @@ export default new Router({
             component: Layout
         },
         {
-            path: '/detail',
+            path: '/detail/:id',
             name: 'detail',
             component: DetailView
         }
