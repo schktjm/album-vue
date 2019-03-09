@@ -1,13 +1,19 @@
 <template>
-    <figure class="image parent" style="height: 100%;">
-        <img :src="data.url" :style="{width: width}">
-    </figure>
+    <base-card class="is-4 flexbox">
+        <p class="title is-4">{{data.title}}</p>
+        <p>*{{data.description}}</p>
+        <p>*{{data.postDatetime}}</p>
+        <p>*{{data.location.lat}}:{{data.location.lng}}</p>
+        <p>*{{data.width}}x{{data.height}}</p>
+    </base-card>
 </template>
 
 <script>
+    import BaseCard from './BaseCard';
 
     export default {
-        name: 'BaseImage',
+        name: 'DetailViewCard',
+        components: {BaseCard},
         props: {
             data: {
                 "location": {
@@ -21,16 +27,17 @@
                 "postDatetime": String,
                 "width": Number,
                 "height": Number
-            },
-            width: String
+            }
+        },
+        data() {
+            return {}
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .parent {
+    .flexbox {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
     }
 </style>
