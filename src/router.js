@@ -17,6 +17,6 @@ export default new Router({
             path: '/detail/:id',
             name: 'detail',
             component: DetailView
-        }
+        },
     ]
 })
