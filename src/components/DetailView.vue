@@ -1,12 +1,9 @@
 <template>
     <div class="has-background-black" style=" height: 100%;">
-        <div v-if="isLoading">
-            <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="true"></b-loading>
-        </div>
-        <div v-else class="columns">
-            <base-image :data="data" :width="width" class="column is-9"></base-image>
-            <detail-view-card :data="data" class="column"></detail-view-card>
-        </div>
+        <a @click="isShow = !isShow">
+            <base-image :data="data" :width="width"></base-image>
+            <detail-view-card v-show="isShow" :data="data"></detail-view-card>
+        </a>
     </div>
 </template>
 
@@ -14,10 +11,11 @@
     import BaseImage from './BaseImage';
     import DetailViewCard from './DetailViewCard';
     import BLoading from "buefy/src/components/loading/Loading";
+    import BIcon from "buefy/src/components/icon/Icon";
 
     export default {
         name: 'DetailView',
-        components: {BLoading, BaseImage, DetailViewCard},
+        components: {BIcon, BLoading, BaseImage, DetailViewCard},
         props: {},
         created() {
             this.data = this.fetchImageById();
@@ -26,7 +24,8 @@
             return {
                 width: '1024px',
                 data: {},
-                isLoading: true
+                isLoading: true,
+                isShow: false
             }
         },
         methods: {
@@ -57,4 +56,8 @@
 </script>
 
 <style lang="scss" scoped>
+    .parent {
+        display: flex;
+
+    }
 </style>
