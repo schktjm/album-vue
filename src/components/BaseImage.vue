@@ -1,6 +1,6 @@
 <template>
     <figure class="image parent" style="height: 100%;">
-        <img :src="data.url" :style="{width: width}">
+        <img v-lazy="data.url" :style="{width: width}">
     </figure>
 </template>
 
