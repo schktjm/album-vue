@@ -43,17 +43,8 @@
             },
         },
         methods: {
-            unixTime2ymd(intTime) {
-                let d = new Date(intTime);
-                let y = new Date(intTime * 1000);
-                let year = y.getFullYear();
-                let month = d.getMonth() + 1;
-                let day = d.getDate();
-                let hour = ('0' + d.getHours()).slice(-2);
-                let min = ('0' + d.getMinutes()).slice(-2);
-                let sec = ('0' + d.getSeconds()).slice(-2);
-                return (year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec);
-
+            unixTime2ymd(time) {
+                return Date(parseInt(time));
             }
         }
     }
