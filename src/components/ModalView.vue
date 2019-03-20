@@ -2,7 +2,7 @@
     <div class="card" style="overflow: scroll;">
         <div class="card-image">
             <figure class="image is-4by3">
-                <img :src="data.url" alt="Image">
+                <img :src="data.url" alt="Image" style="object-fit: cover;">
             </figure>
         </div>
         <div class="card-content">
