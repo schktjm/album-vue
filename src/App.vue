@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <navbar></navbar>
-        <router-view/>
+        <navbar @getWord="val => this.searchWord = val"></navbar>
+        <router-view :searchWord="searchWord"/>
     </div>
 </template>
 
@@ -10,7 +10,12 @@
 
     export default {
         name: 'App',
-        components: {Navbar}
+        components: {Navbar},
+        data() {
+            return {
+                searchWord: ''
+            }
+        }
     }
 </script>
 

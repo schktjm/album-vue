@@ -11,7 +11,8 @@ export default new Router({
         {
             path: '/',
             name: 'layout',
-            component: Layout
+            component: Layout,
+            // props: {searchWord: this.searchWord}
         },
         {
             path: '/detail/:id',

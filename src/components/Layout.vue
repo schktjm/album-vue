@@ -1,7 +1,7 @@
 <template>
     <div class="has-background-black">
         <div class="columns is-multiline is-centered">
-            <div v-for="(image, idx) in images" :key="idx"
+            <div v-for="image in matchImages" :key="image.id"
                  class="column  is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
                 <a @click="actievModal(image)">
                     <base-image :data="image" class="is-1by1"></base-image>
@@ -28,7 +28,7 @@
     export default {
         name: 'Layout',
         components: {BModal, BaseImage, InfiniteLoading, ModalView},
-        props: {BaseImage},
+        props: {searchWord: String},
         data() {
             return {
                 images: [],
@@ -37,7 +37,11 @@
                 activeModalImg: {}
             }
         },
-        computed: {},
+        computed: {
+            matchImages() {
+                return this.images.filter(x => x.title.indexOf(this.searchWord) !== -1);
+            }
+        },
         created() {
         },
         methods: {
