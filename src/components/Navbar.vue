@@ -11,12 +11,36 @@
         <!--<span aria-hidden="true"></span>-->
         <!--<span aria-hidden="true"></span>-->
         <!--</a>-->
+        <div class="navbar-menu">
+            <div class="navbar-end" style="display: flex; align-items: center;">
+                <b-field style="margin-right: 10px;">
+                    <b-input placeholder="Search..."
+                             type="search"
+                             icon-pack="fas"
+                             icon="search"
+                             v-model="word"
+                             @input="$emit('getWord',word)">
+                    </b-input>
+                </b-field>
+            </div>
+        </div>
     </nav>
 </template>
 
 <script>
+    import BField from "buefy/src/components/field/Field";
+    import BInput from "buefy/src/components/input/Input";
+
     export default {
-        name: 'Navbar'
+        name: 'Navbar',
+        components: {BInput, BField},
+        data() {
+            return {
+                word: ''
+            }
+        },
+        methods: {
+        }
     }
 </script>
 
